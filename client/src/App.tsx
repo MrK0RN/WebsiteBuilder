@@ -11,6 +11,9 @@ import Register from "@/pages/Register";
 import Login from "@/pages/Login";
 import MaterialDetail from "@/pages/MaterialDetail";
 import AdminPanel from "@/pages/AdminPanel";
+import Favorites from "@/pages/Favorites";
+import Compare from "@/pages/Compare";
+import Documentation from "@/pages/Documentation";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
 function Router() {
@@ -21,6 +24,9 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/material/:id" component={MaterialDetail} />
       <Route path="/admin" component={AdminPanel} />
+      <Route path="/favorites" component={Favorites} />
+      <Route path="/compare" component={Compare} />
+      <Route path="/documentation" component={Documentation} />
       <Route path="/landing" component={Landing} />
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />

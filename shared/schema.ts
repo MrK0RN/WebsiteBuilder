@@ -116,14 +116,40 @@ export const favorites = pgTable("favorites", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+// User reviews and ratings
+export const reviews = pgTable("reviews", {
+  id: serial("id").primaryKey(),
+  userId: varchar("user_id").notNull().references(() => users.id),
+  materialId: integer("material_id").notNull().references(() => materials.id),
+  rating: integer("rating").notNull(), // 1-5 stars
+  title: varchar("title", { length: 255 }).notNull(),
+  content: text("content").notNull(),
+  applicationArea: varchar("application_area", { length: 100 }), // automotive, medical, consumer, etc.
+  processingMethod: varchar("processing_method", { length: 100 }), // injection molding, 3d printing, etc.
+  isVerifiedPurchase: boolean("is_verified_purchase").default(false),
+  helpfulCount: integer("helpful_count").default(0),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const reviewHelpful = pgTable("review_helpful", {
+  id: serial("id").primaryKey(),
+  userId: varchar("user_id").notNull().references(() => users.id),
+  reviewId: integer("review_id").notNull().references(() => reviews.id, { onDelete: "cascade" }),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 // Relations
 export const usersRelations = relations(users, ({ many }) => ({
   favorites: many(favorites),
+  reviews: many(reviews),
+  reviewsHelpful: many(reviewHelpful),
 }));
 
 export const materialsRelations = relations(materials, ({ many }) => ({
   vendors: many(materialVendors),
   favorites: many(favorites),
+  reviews: many(reviews),
 }));
 
 export const vendorsRelations = relations(vendors, ({ many }) => ({
@@ -149,6 +175,29 @@ export const favoritesRelations = relations(favorites, ({ one }) => ({
   material: one(materials, {
     fields: [favorites.materialId],
     references: [materials.id],
+  }),
+}));
+
+export const reviewsRelations = relations(reviews, ({ one, many }) => ({
+  user: one(users, {
+    fields: [reviews.userId],
+    references: [users.id],
+  }),
+  material: one(materials, {
+    fields: [reviews.materialId],
+    references: [materials.id],
+  }),
+  helpful: many(reviewHelpful),
+}));
+
+export const reviewHelpfulRelations = relations(reviewHelpful, ({ one }) => ({
+  user: one(users, {
+    fields: [reviewHelpful.userId],
+    references: [users.id],
+  }),
+  review: one(reviews, {
+    fields: [reviewHelpful.reviewId],
+    references: [reviews.id],
   }),
 }));
 
