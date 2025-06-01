@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 98%; /* #FAFAFA */
+  --foreground: 0 0% 18%; /* #2E2E2E */
+  --muted: 0 0% 96%; /* #F5F5F5 */
+  --muted-foreground: 0 0% 45%; /* #737373 */
+  --popover: 0 0% 100%; /* #FFFFFF */
+  --popover-foreground: 0 0% 18%; /* #2E2E2E */
+  --card: 0 0% 100%; /* #FFFFFF */
+  --card-foreground: 0 0% 18%; /* #2E2E2E */
+  --border: 0 0% 89%; /* #E4E4E4 */
+  --input: 0 0% 89%; /* #E4E4E4 */
+  --primary: 207 90% 54%; /* #1976D2 */
+  --primary-foreground: 211 100% 99%; /* #FEFEFE */
+  --secondary: 0 0% 26%; /* #424242 */
+  --secondary-foreground: 0 0% 98%; /* #FAFAFA */
+  --accent: 28 100% 50%; /* #FF9800 */
+  --accent-foreground: 0 0% 100%; /* #FFFFFF */
+  --destructive: 0 84% 60%; /* #F44336 */
+  --destructive-foreground: 0 0% 98%; /* #FAFAFA */
+  --ring: 207 90% 54%; /* #1976D2 */
+  --radius: 0.5rem;
+  --success: 122 39% 49%; /* #4CAF50 */
+  --warning: 14 100% 57%; /* #FF5722 */
+  --surface: 0 0% 100%; /* #FFFFFF */
+}
+
+.dark {
+  --background: 240 10% 4%; /* #0A0A0B */
+  --foreground: 0 0% 98%; /* #FAFAFA */
+  --muted: 240 4% 16%; /* #27272A */
+  --muted-foreground: 240 5% 65%; /* #A1A1AA */
+  --popover: 240 10% 4%; /* #0A0A0B */
+  --popover-foreground: 0 0% 98%; /* #FAFAFA */
+  --card: 240 10% 4%; /* #0A0A0B */
+  --card-foreground: 0 0% 98%; /* #FAFAFA */
+  --border: 240 4% 16%; /* #27272A */
+  --input: 240 4% 16%; /* #27272A */
+  --primary: 207 90% 54%; /* #1976D2 */
+  --primary-foreground: 211 100% 99%; /* #FEFEFE */
+  --secondary: 240 4% 16%; /* #27272A */
+  --secondary-foreground: 0 0% 98%; /* #FAFAFA */
+  --accent: 28 100% 50%; /* #FF9800 */
+  --accent-foreground: 0 0% 100%; /* #FFFFFF */
+  --destructive: 0 62% 31%; /* #7F1D1D */
+  --destructive-foreground: 0 0% 98%; /* #FAFAFA */
+  --ring: 240 5% 64%; /* #A1A1AA */
+  --radius: 0.5rem;
+  --success: 122 39% 49%; /* #4CAF50 */
+  --warning: 14 100% 57%; /* #FF5722 */
+  --surface: 240 10% 4%; /* #0A0A0B */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Roboto', 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .material-shadow {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
+  }
+  .material-shadow-lg {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.24);
+  }
+  .material-shadow-xl {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.24);
+  }
+  
+  .ripple {
+    position: relative;
+    overflow: hidden;
+  }
+  .ripple:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  .ripple:active:before {
+    width: 300px;
+    height: 300px;
+  }
+}
