@@ -78,7 +78,7 @@ export default function SearchFilters({ filters, onFiltersChange, onSearch, isLo
                 <SelectValue placeholder="All Types" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Types</SelectItem>
+                <SelectItem value="all">All Types</SelectItem>
                 <SelectItem value="ABS">ABS</SelectItem>
                 <SelectItem value="PLA">PLA</SelectItem>
                 <SelectItem value="PETG">PETG</SelectItem>
@@ -105,7 +105,7 @@ export default function SearchFilters({ filters, onFiltersChange, onSearch, isLo
                 <SelectValue placeholder="All Manufacturers" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Manufacturers</SelectItem>
+                <SelectItem value="all">All Manufacturers</SelectItem>
                 <SelectItem value="BASF">BASF</SelectItem>
                 <SelectItem value="DuPont">DuPont</SelectItem>
                 <SelectItem value="SABIC">SABIC</SelectItem>
