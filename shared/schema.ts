@@ -224,6 +224,18 @@ export const insertFavoriteSchema = createInsertSchema(favorites).omit({
   createdAt: true,
 });
 
+export const insertReviewSchema = createInsertSchema(reviews).omit({
+  id: true,
+  helpfulCount: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export const insertReviewHelpfulSchema = createInsertSchema(reviewHelpful).omit({
+  id: true,
+  createdAt: true,
+});
+
 export type UpsertUser = typeof users.$inferInsert;
 export type User = typeof users.$inferSelect;
 export type Material = typeof materials.$inferSelect;
@@ -234,3 +246,7 @@ export type MaterialVendor = typeof materialVendors.$inferSelect;
 export type InsertMaterialVendor = z.infer<typeof insertMaterialVendorSchema>;
 export type Favorite = typeof favorites.$inferSelect;
 export type InsertFavorite = z.infer<typeof insertFavoriteSchema>;
+export type Review = typeof reviews.$inferSelect;
+export type InsertReview = z.infer<typeof insertReviewSchema>;
+export type ReviewHelpful = typeof reviewHelpful.$inferSelect;
+export type InsertReviewHelpful = z.infer<typeof insertReviewHelpfulSchema>;
