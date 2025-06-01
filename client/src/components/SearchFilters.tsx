@@ -285,7 +285,7 @@ export default function SearchFilters({ filters, onFiltersChange, onSearch, isLo
                       <SelectValue placeholder="UL94 Rating" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">Any UL94</SelectItem>
+                      <SelectItem value="any">Any UL94</SelectItem>
                       <SelectItem value="V-0">UL94 V-0</SelectItem>
                       <SelectItem value="V-1">UL94 V-1</SelectItem>
                       <SelectItem value="V-2">UL94 V-2</SelectItem>
@@ -308,7 +308,7 @@ export default function SearchFilters({ filters, onFiltersChange, onSearch, isLo
                     <SelectValue placeholder="All Colors" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Colors</SelectItem>
+                    <SelectItem value="all">All Colors</SelectItem>
                     <SelectItem value="Natural">Natural</SelectItem>
                     <SelectItem value="Black">Black</SelectItem>
                     <SelectItem value="White">White</SelectItem>
